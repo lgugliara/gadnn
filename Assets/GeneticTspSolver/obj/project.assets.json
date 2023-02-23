@@ -1,0 +1,50 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {}
+  },
+  "libraries": {},
+  "projectFileDependencyGroups": {
+    "net7.0": []
+  },
+  "packageFolders": {
+    "/Users/lorenz/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/lorenz/Library/Mobile Documents/com~apple~CloudDocs/Progetti/IT/gpu-tsp/Assets/TSP/GeneticTspSolver/GeneticTspSolver.csproj",
+      "projectName": "GeneticTspSolver",
+      "projectPath": "/Users/lorenz/Library/Mobile Documents/com~apple~CloudDocs/Progetti/IT/gpu-tsp/Assets/TSP/GeneticTspSolver/GeneticTspSolver.csproj",
+      "packagesPath": "/Users/lorenz/.nuget/packages/",
+      "outputPath": "/Users/lorenz/Library/Mobile Documents/com~apple~CloudDocs/Progetti/IT/gpu-tsp/Assets/TSP/GeneticTspSolver/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/lorenz/.config/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "runtimeIdentifierGraphPath": "/Users/lorenz/Library/Caches/VisualStudio/8.0/MSBuild/2773_1/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

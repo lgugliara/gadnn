@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{A29F8C63-2407-9118-4054-F4E867CBF5F6}</ProjectGuid>
+    <ProjectGuid>{15C5401D-F845-8896-A717-4978DF10DC9E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -58,29 +58,30 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/2022.2.7f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/TSP/GeneticTspSolver/Gene.cs" />
-    <Compile Include="Assets/TSP/GeneticTspSolver/Chromosome.cs" />
-    <Compile Include="Assets/TSP/GeneticTspSolver/Mutation.cs" />
-    <Compile Include="Assets/TSP/Reply/2022/Specific/FileHandler.cs" />
-    <Compile Include="Assets/TSP/Reply/2022/Specific/Demon.cs" />
-    <Compile Include="Assets/TSP/GeneticTspSolver/Crossover.cs" />
-    <Compile Include="Assets/TSP/GeneticTspSolver/Population.cs" />
-    <Compile Include="Assets/TSP/Reply/2022/Specific/GameParameter.cs" />
-    <Compile Include="Assets/TSP/GeneticTspSolver/Enums/VerbosityLevel.cs" />
-    <Compile Include="Assets/TSP/GeneticTspSolver/Termination.cs" />
+    <Compile Include="Assets/GeneticTspSolver/Performers/Crossover.cs" />
+    <Compile Include="Assets/ReplyChallenges/2022/Specific/FileHandler.cs" />
+    <Compile Include="Assets/ReplyChallenges/2022/Specific/Demon.cs" />
+    <Compile Include="Assets/GeneticTspSolver/Performers/Picker.cs" />
     <Compile Include="Assets/Test.cs" />
-    <Compile Include="Assets/TSP/GeneticTspSolver/GeneticAlgorithm.cs" />
-    <Compile Include="Assets/TSP/GeneticTspSolver/Fitness.cs" />
+    <Compile Include="Assets/ReplyChallenges/2022/Specific/GameParameter.cs" />
+    <Compile Include="Assets/GeneticTspSolver/Performers/Mutation.cs" />
+    <Compile Include="Assets/GeneticTspSolver/Utils/Termination.cs" />
+    <Compile Include="Assets/GeneticTspSolver/GeneticAlgorithm.cs" />
+    <Compile Include="Assets/GeneticTspSolver/Utils/VerbosityLevel.cs" />
+    <Compile Include="Assets/GeneticTspSolver/Gene.cs" />
+    <Compile Include="Assets/GeneticTspSolver/Population.cs" />
+    <Compile Include="Assets/GeneticTspSolver/Performers/Fitness.cs" />
+    <Compile Include="Assets/GeneticTspSolver/Chromosome.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets/TSP/Reply/2022/In/5.txt" />
-    <None Include="Assets/TSP/Reply/2022/In/4.txt" />
-    <None Include="Assets/TSP/Reply/2022/In/2.txt" />
+    <None Include="Assets/ReplyChallenges/2022/In/5.txt" />
+    <None Include="Assets/ReplyChallenges/2022/In/4.txt" />
+    <None Include="Assets/ReplyChallenges/2022/In/2.txt" />
     <None Include="Assets/ComputeShaders/GAKernels.compute" />
-    <None Include="Assets/TSP/Reply/2022/In/0.txt" />
-    <None Include="Assets/TSP/Reply/2022/In/3.txt" />
+    <None Include="Assets/ReplyChallenges/2022/In/0.txt" />
+    <None Include="Assets/ReplyChallenges/2022/In/3.txt" />
     <None Include="Assets/ComputeShaders/GAUtils.compute" />
-    <None Include="Assets/TSP/Reply/2022/In/1.txt" />
+    <None Include="Assets/ReplyChallenges/2022/In/1.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

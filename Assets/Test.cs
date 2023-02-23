@@ -12,11 +12,13 @@ using ReplyChallenge2022;
 public class Test : MonoBehaviour
 {
     public string file_name = "5";
-    public int population_size = 10;
-    public int chromosome_size = 1000;
+    public int best_score = 19_913_031;
+    public int chromosomes_count = 10;
+    public int genes_count = 1000;
+    public double mutation_factor = 0.1;
+    public bool isUnique = true;
 
     Thread t;
-    System.Random rnd = new System.Random();
 
     Func<Chromosome<int>, double> evaluate = (Chromosome<int> chromosome) =>
     {
@@ -65,25 +67,18 @@ public class Test : MonoBehaviour
 
     /* void Ga_BestChromosomeChanged(object? sender, EventArgs e)
     {
-        FileHandler.DrawAdam(@"Assets/TSP/Reply/2022/Out/" + file_name + ".txt", ga.BestChromosome);
+        FileHandler.DrawAdam(@"Assets/ReplyChallenges/2022/Out/" + file_name + ".txt", ga.BestChromosome);
     } */
-    
+
     void Start()
     {
-        FileHandler.ImportInputData(@"Assets/TSP/Reply/2022/In/" + file_name + ".txt");
+        FileHandler.ImportInputData(@"Assets/ReplyChallenges/2022/In/" + file_name + ".txt");
 
-        var pool = GameParameter.Demons.Select(x => x.Id).ToList();
-        var tmp_pool = new List<int>(pool);
+        var values = GameParameter.Demons.Select(x => x.Id).ToList();
 
-        var values = Enumerable.Range(0, chromosome_size).Select(v => {
-            var index = tmp_pool[rnd.Next(0, tmp_pool.Count)];
-            tmp_pool.Remove(index);
-            return index;
-        }).ToArray();
+        //FileHandler.ImportAdamData(@"Assets/ReplyChallenges/2022/Out/" + file_name + ".txt", adam);
 
-        //FileHandler.ImportAdamData(@"Assets/TSP/Reply/2022/Out/" + file_name + ".txt", adam);
-
-        var ga = new GeneticAlgorithm<int>(population_size, values, evaluate, pool.ToArray());
+        var ga = new GeneticAlgorithm<int>(chromosomes_count, genes_count, values, evaluate, best_score, mutation_factor, isUnique);
 
         t = new Thread(() => ga.Start());
         t.Start();

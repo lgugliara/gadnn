@@ -1,0 +1,42 @@
+﻿<Properties StartupConfiguration="{15C5401D-F845-8896-A717-4978DF10DC9E}|">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="739ddf84-4c7a-498d-aeaf-c2cbb00714c2" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ReplyChallenges/2022/Specific/GameParameter.cs">
+    <Files>
+      <File FileName="Assets/GeneticTspSolver/Performers/Crossover.cs" Line="1" Column="1" />
+      <File FileName="Assets/GeneticTspSolver/Performers/Mutation.cs" Line="1" Column="1" />
+      <File FileName="Assets/GeneticTspSolver/Performers/Fitness.cs" Line="1" Column="1" />
+      <File FileName="Assets/Test.cs" Line="8" Column="9" NotebookId="1" />
+      <File FileName="Assets/GeneticTspSolver/GeneticAlgorithm.cs" Line="7" Column="60" NotebookId="1" />
+      <File FileName="Assets/GeneticTspSolver/Population.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Assets/GeneticTspSolver/Chromosome.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Assets/GeneticTspSolver/Gene.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Assets/ReplyChallenges/2022/Specific/GameParameter.cs" Line="1" Column="1" NotebookId="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="gpu-tps" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="GeneticTspSolver" expanded="True">
+                <Node name="Performers" expanded="True" />
+                <Node name="Utils" expanded="True" />
+              </Node>
+              <Node name="ReplyChallenges" expanded="True">
+                <Node name="2022" expanded="True">
+                  <Node name="Specific" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="Resources" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+</Properties>
