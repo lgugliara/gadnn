@@ -32,7 +32,11 @@ namespace GeneticTspSolver
                 Genes,
                 (g, s, i) =>
                 {
-                    if (g == null) g = new Gene<T>(this, (int)i, Values[(int)i]);
+                    if (g == null)
+                    {
+                        var new_gene = new Gene<T>(this, (int)i, Values[(int)i]);
+                        Genes[(int)i] = new_gene;
+                    }
                 }
             );
         }

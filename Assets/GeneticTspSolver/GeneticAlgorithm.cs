@@ -35,7 +35,7 @@ namespace GeneticTspSolver
             if (isUnique)
             {
                 System.Random rnd = new System.Random();
-                var adam_pool = new List<T>(values);
+                var adam_pool = values.ToArray().ToList();
                 var adam_values = Enumerable
                     .Range(0, genes_count)
                     .Select(x => {
@@ -43,11 +43,11 @@ namespace GeneticTspSolver
                         adam_pool.Remove(index);
                         return index;
                     }).ToArray();
-                Parallel.ForEach(
+                Array.ForEach(
                     adam_values,
                     v => {
                         values.Remove(v);
-                        values.Prepend(v);
+                        values.Insert(0, v);
                     }
                 );
             }

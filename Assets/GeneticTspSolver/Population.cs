@@ -87,6 +87,10 @@ namespace GeneticTspSolver
             if (best_of_generation.Fitness.Value > Best.Fitness.Value)
             {
                 Best = best_of_generation;
+                Parallel.ForEach(
+                    Chromosomes,
+                    (c, s, i) => c = Chromosome<T>.From(c, (int)i)
+                );
                 UnityEngine.Debug.Log(Best.Fitness.ToString());
             }
             // UnityEngine.Debug.Log("Picking done in " + Stopwatch.Elapsed);

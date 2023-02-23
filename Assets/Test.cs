@@ -13,8 +13,8 @@ public class Test : MonoBehaviour
 {
     public string file_name = "5";
     public int best_score = 19_913_031;
-    public int chromosomes_count = 10;
-    public int genes_count = 1000;
+    public int chromosomes_count = 20;
+    public int genes_count = 10000;
     public double mutation_factor = 0.1;
     public bool isUnique = true;
 
