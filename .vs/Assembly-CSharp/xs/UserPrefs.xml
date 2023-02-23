@@ -1,0 +1,34 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Test.cs">
+    <Files>
+      <File FileName="Assets/Test.cs" Line="62" Column="13" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Assembly-CSharp" expanded="True">
+              <Node name="Assets" expanded="True">
+                <Node name="TSP" expanded="True">
+                  <Node name="GeneticTspSolver" expanded="True">
+                    <Node name="GeneticAlgorithms" expanded="True" />
+                  </Node>
+                </Node>
+                <Node name="Test.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/lorenz/Library/Mobile Documents/com~apple~CloudDocs/Progetti/IT/gpu-tsp/Assets/TSP/GeneticTspSolver/GeneticAlgorithms/LinearGeneticAlgorithm.cs" relfile="Assets/TSP/GeneticTspSolver/GeneticAlgorithms/LinearGeneticAlgorithm.cs" line="79" column="1" />
+      <Breakpoint file="/Users/lorenz/Library/Mobile Documents/com~apple~CloudDocs/Progetti/IT/gpu-tsp/Assets/Test.cs" relfile="Assets/Test.cs" line="61" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

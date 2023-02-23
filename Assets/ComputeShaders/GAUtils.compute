@@ -1,0 +1,14 @@
+#pragma kernel ClonePopulations
+
+struct Gene {
+
+};
+
+RWStructuredBuffer<Gene> previous;
+RWStructuredBuffer<Gene> next;
+
+[numthreads(64,1,1)]
+void ClonePopulations (uint3 id : SV_DispatchThreadID)
+{
+    next[id.x] = previous[id.x];
+}

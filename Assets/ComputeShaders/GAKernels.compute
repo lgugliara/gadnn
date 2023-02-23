@@ -1,0 +1,9 @@
+#pragma kernel Fit
+
+RWStructuredBuffer<float> Result;
+
+[numthreads(64,1,1)]
+void Fit (uint3 id : SV_DispatchThreadID)
+{
+    Result[id.x] = 0;
+}

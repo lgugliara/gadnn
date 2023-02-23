@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Specific\**" />
+    <EmbeddedResource Remove="Specific\**" />
+    <None Remove="Specific\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Specific\FileHandler.cs" />
+    <Compile Include="Specific\GameParameter.cs" />
+    <Compile Include="Specific\Demon.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\GeneticTspSolver\GeneticTspSolver.csproj" />
+  </ItemGroup>
+
+</Project>
