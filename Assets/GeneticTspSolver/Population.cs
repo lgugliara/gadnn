@@ -12,6 +12,7 @@ namespace GeneticTspSolver
         public GeneticAlgorithm<T> Parent { get; set; }
         public int Id { get; private set; }
 
+        public T[] Pool;
         public T[] AllValues;
         public Gene<T>[] AllGenes;
         public Chromosome<T>[] Chromosomes { get; set; }
@@ -28,12 +29,17 @@ namespace GeneticTspSolver
 
         private int _bestId = 0;
 
-        public Population(GeneticAlgorithm<T> parent, int id, int chromosomes_count, int genes_count, T[] values)
+        public Population(GeneticAlgorithm<T> parent, int id, int chromosomes_count, int genes_count, T[] pool, T[] adam_values)
         {
             Parent = parent;
             Id = id;
 
-            AllValues = values.AsParallel().ToArray();
+            Pool = pool;
+            AllValues = Enumerable
+                .Range(0, chromosomes_count * genes_count)
+                .AsParallel()
+                .Select(x => adam_values[x % genes_count])
+                .ToArray();
             AllGenes = new Gene<T>[chromosomes_count * genes_count];
             Chromosomes = new Chromosome<T>[chromosomes_count];
 
@@ -61,39 +67,29 @@ namespace GeneticTspSolver
 
         public void PerformMutate()
         {
-            // Stopwatch.Restart();
+            //Stopwatch.Restart();
             Parallel.ForEach(
                 Chromosomes.AsParallel().Where(c => c.Id != _bestId),
                 Mutation<T>.Mutate
             );
-            // UnityEngine.Debug.Log("Mutation done in " + Stopwatch.Elapsed);
+            //UnityEngine.Debug.Log("Mutation done in " + Stopwatch.Elapsed);
         }
 
         public void PerformEvaluate()
         {
-            // Stopwatch.Restart();
+            //Stopwatch.Restart();
             Parallel.ForEach(
                 Chromosomes,
                 Fitness<T>.Evaluate
             );
-            // UnityEngine.Debug.Log("Evaluation done in " + Stopwatch.Elapsed);
+            //UnityEngine.Debug.Log("Evaluation done in " + Stopwatch.Elapsed);
         }
 
         public void PerformPick()
         {
-            // this.Stopwatch.Restart();
-            var best_of_generation = Chromosomes.Max();
-
-            if (best_of_generation.Fitness.Value > Best.Fitness.Value)
-            {
-                Best = best_of_generation;
-                Parallel.ForEach(
-                    Chromosomes,
-                    (c, s, i) => c = Chromosome<T>.From(c, (int)i)
-                );
-                UnityEngine.Debug.Log(Best.Fitness.ToString());
-            }
-            // UnityEngine.Debug.Log("Picking done in " + Stopwatch.Elapsed);
+            //this.Stopwatch.Restart();
+            Picker<T>.Pick(this);
+            //UnityEngine.Debug.Log("Picking done in " + Stopwatch.Elapsed);
         }
     }
 }

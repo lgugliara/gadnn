@@ -222,6 +222,6 @@ MonoBehaviour:
   file_name: 5
   best_score: 19913031
   chromosomes_count: 10
-  genes_count: 10000
+  genes_count: 100000
   mutation_factor: 0.1
   isUnique: 1

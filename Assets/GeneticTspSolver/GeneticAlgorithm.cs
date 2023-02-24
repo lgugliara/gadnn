@@ -32,27 +32,21 @@ namespace GeneticTspSolver
             Fitness<T>.Initialize(evaluate, comparer);
             Picker<T>.Initialize();
 
+            var adam_values = values.Take(genes_count);
+
             if (isUnique)
             {
                 System.Random rnd = new System.Random();
                 var adam_pool = values.ToArray().ToList();
-                var adam_values = Enumerable
-                    .Range(0, genes_count)
+                adam_values = adam_values
                     .Select(x => {
                         var index = adam_pool[rnd.Next(0, adam_pool.Count)];
                         adam_pool.Remove(index);
                         return index;
-                    }).ToArray();
-                Array.ForEach(
-                    adam_values,
-                    v => {
-                        values.Remove(v);
-                        values.Insert(0, v);
-                    }
-                );
+                    });
             }
 
-            Population = new Population<T>(this, 0, chromosomes_count, genes_count, values.ToArray());
+            Population = new Population<T>(this, 0, chromosomes_count, genes_count, values.ToArray(), adam_values.ToArray());
 
             UnityEngine.Debug.Log("First population created in " + Stopwatch.Elapsed);
         }

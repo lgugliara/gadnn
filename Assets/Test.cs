@@ -78,7 +78,15 @@ public class Test : MonoBehaviour
 
         //FileHandler.ImportAdamData(@"Assets/ReplyChallenges/2022/Out/" + file_name + ".txt", adam);
 
-        var ga = new GeneticAlgorithm<int>(chromosomes_count, genes_count, values, evaluate, best_score, mutation_factor, isUnique);
+        var ga = new GeneticAlgorithm<int>(
+            chromosomes_count: chromosomes_count,
+            genes_count: genes_count,
+            values: values,
+            evaluate: evaluate,
+            comparer: best_score,
+            mutation_factor: mutation_factor,
+            isUnique: isUnique
+        );
 
         t = new Thread(() => ga.Start());
         t.Start();
