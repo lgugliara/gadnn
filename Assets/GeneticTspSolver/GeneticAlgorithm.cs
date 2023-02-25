@@ -10,8 +10,9 @@ namespace GeneticTspSolver
     {
         public Population<T> Population { get; set; }
 
-        //public event EventHandler OnRan;
-        //public event EventHandler OnTerminate;
+        public event EventHandler OnRan;
+        public event EventHandler OnBestChange;
+        public event EventHandler OnTerminate;
 
         public Stopwatch Stopwatch { get; set; } = Stopwatch.StartNew();
 
@@ -22,10 +23,15 @@ namespace GeneticTspSolver
             Func<Chromosome<T>, double> evaluate,
             double comparer,
             double mutation_factor,
-            bool isUnique
+            bool isUnique,
+            EventHandler on_ran = null,
+            EventHandler on_best_change = null,
+            EventHandler on_terminate = null
         ) {
             // Benchmark
             Stopwatch.Restart();
+
+            genes_count = Math.Min(genes_count, values.Count);
 
             Crossover<T>.Initialize();
             Mutation<T>.Initialize(Math.Max(1, (int)(Math.Min(1, mutation_factor) * genes_count)));
@@ -48,35 +54,32 @@ namespace GeneticTspSolver
 
             Population = new Population<T>(this, 0, chromosomes_count, genes_count, values.ToArray(), adam_values.ToArray());
 
+            OnRan = on_ran;
+            OnBestChange = on_best_change;
+            OnTerminate = on_terminate;
+
             UnityEngine.Debug.Log("First population created in " + Stopwatch.Elapsed);
         }
 
-        public async Task Start()
-        {
-            Fitness<T>.Evaluate(Chromosome<T>.Adam);
-
-            UnityEngine.Debug.LogAssertion("Adam fitness: " + Chromosome<T>.Adam.Fitness.Value);
-
-            Run();
-        }
+        public async Task Start() => Run();
 
         public void Run()
         {
             for(int generation = 0; !ITermination<T>.IsTerminated(this); generation++)
             {
-                if(generation % 20 == 0)
+                if(generation % 1 == 0)
                     UnityEngine.Debug.LogWarning("(GEN)\t" + generation + "(BEST FITNESS)\t" + Population.Best.Fitness.Value);
 
                 // TODO
                 //Population.PerformCrossover();
                 Population.PerformMutate();
-                Population.PerformEvaluate();
+                Population.PerformEvaluate(OnBestChange);
                 Population.PerformPick();
 
-                //OnRan?.Invoke(this, EventArgs.Empty);
+                OnRan?.Invoke(this, EventArgs.Empty);
             }
 
-            //OnTerminate?.Invoke(this, EventArgs.Empty);
+            OnTerminate?.Invoke(this, EventArgs.Empty);
         }
     }
 }

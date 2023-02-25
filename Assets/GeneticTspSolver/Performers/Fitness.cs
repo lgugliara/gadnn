@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace GeneticTspSolver
 {
@@ -12,13 +14,25 @@ namespace GeneticTspSolver
 
         private static Func<Chromosome<T>, double> _evaluate { get; set; } = (Chromosome<T> chromosome) => 0;
 
-        public static void Evaluate(Chromosome<T> chromosome) {
-            chromosome.Fitness.Value = Fitness<T>._evaluate(chromosome);
+        public static bool Evaluate(Population<T> population)
+        {
+            var old_best = population.Chromosomes.Max();
+            Parallel.ForEach(
+                population.Chromosomes,
+                Evaluate
+            );
+            var new_best = population.Chromosomes.Max();
+
+            return new_best.Fitness.Value > old_best.Fitness.Value;
+        }
+        public static void Evaluate(Chromosome<T> chromosome)
+        {
+            chromosome.Fitness.Value = _evaluate(chromosome);
         }
 
         public override string ToString()
         {
-            return "(fitness)\t" + Value.ToString("N0") + "\t(% over comparer value)" + Percent.ToString("F4");
+            return "(fitness) " + Value.ToString("N0") + "\t(% over comparer value) " + Percent.ToString("F4");
         }
 
         public static void Initialize(Func<Chromosome<T>, double> evaluate, double comparer)

@@ -77,7 +77,9 @@
     <None Include="Assets/ReplyChallenges/2022/In/5.txt" />
     <None Include="Assets/ReplyChallenges/2022/In/4.txt" />
     <None Include="Assets/ReplyChallenges/2022/In/2.txt" />
+    <None Include="Assets/ReplyChallenges/2022/Out/1.txt" />
     <None Include="Assets/ComputeShaders/GAKernels.compute" />
+    <None Include="Assets/ReplyChallenges/2022/Out/5.txt" />
     <None Include="Assets/ReplyChallenges/2022/In/0.txt" />
     <None Include="Assets/ReplyChallenges/2022/In/3.txt" />
     <None Include="Assets/ComputeShaders/GAUtils.compute" />

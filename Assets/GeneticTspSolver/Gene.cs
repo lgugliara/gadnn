@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using TreeEditor;
 
 namespace GeneticTspSolver
 {
-    public class Gene<T>
+    public class Gene<T> : IEquatable<T>
     {
         public Chromosome<T> Parent { get; set; }
         public int Id { get; private set; }
@@ -18,6 +19,7 @@ namespace GeneticTspSolver
         {
             Parent = parent;
             Id = id;
+            Parent.Genes[id] = this;
 
             Value = value;
         }
@@ -25,5 +27,7 @@ namespace GeneticTspSolver
         public override string ToString() => Value.ToString();
 
         public static Gene<T> From(Gene<T> from, Chromosome<T> parent) => new Gene<T>(parent, from.Id, from.Value);
+
+        public bool Equals(T other) => Value.Equals(other);
     }
 }

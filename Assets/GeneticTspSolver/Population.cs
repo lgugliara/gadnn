@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 
 namespace GeneticTspSolver
 {
@@ -35,27 +36,31 @@ namespace GeneticTspSolver
             Id = id;
 
             Pool = pool;
-            AllValues = Enumerable
-                .Range(0, chromosomes_count * genes_count)
-                .AsParallel()
-                .Select(x => adam_values[x % genes_count])
-                .ToArray();
+
+            AllValues = new T[chromosomes_count * genes_count];
+            Parallel.For(
+                0,
+                AllValues.Length,
+                i => AllValues[i] = adam_values[i % genes_count]
+            );
             AllGenes = new Gene<T>[chromosomes_count * genes_count];
+
             Chromosomes = new Chromosome<T>[chromosomes_count];
-
             Chromosome<T>.Adam = new Chromosome<T>(this, 0, genes_count);
-
+            Fitness<T>.Evaluate(Chromosome<T>.Adam);
             Parallel.For(
                 0,
                 chromosomes_count,
                 i => Chromosomes[i] = Chromosome<T>.From(Chromosome<T>.Adam, i)
             );
+
+            UnityEngine.Debug.LogAssertion("Adam fitness: " + Chromosome<T>.Adam.Fitness.Value);
         }
 
         // TODO
         public void PerformCrossover()
         {
-            // this.Stopwatch.Restart();
+            // Stopwatch.Restart();
             var creators = this.Chromosomes.OrderByDescending(x => x.Fitness.Value).Take(2).ToList();
 
             Parallel.ForEach(
@@ -67,29 +72,31 @@ namespace GeneticTspSolver
 
         public void PerformMutate()
         {
-            //Stopwatch.Restart();
+            Stopwatch.Restart();
             Parallel.ForEach(
                 Chromosomes.AsParallel().Where(c => c.Id != _bestId),
                 Mutation<T>.Mutate
             );
-            //UnityEngine.Debug.Log("Mutation done in " + Stopwatch.Elapsed);
+            UnityEngine.Debug.Log("Mutation done in " + Stopwatch.Elapsed);
         }
 
-        public void PerformEvaluate()
+        public bool PerformEvaluate(EventHandler e)
         {
-            //Stopwatch.Restart();
-            Parallel.ForEach(
-                Chromosomes,
-                Fitness<T>.Evaluate
-            );
-            //UnityEngine.Debug.Log("Evaluation done in " + Stopwatch.Elapsed);
+            Stopwatch.Restart();
+            var hasChanged = Fitness<T>.Evaluate(this);
+            UnityEngine.Debug.Log("Evaluation done in " + Stopwatch.Elapsed);
+
+            if(e != null)
+                e.Invoke(this, EventArgs.Empty);
+
+            return hasChanged;
         }
 
         public void PerformPick()
         {
-            //this.Stopwatch.Restart();
+            this.Stopwatch.Restart();
             Picker<T>.Pick(this);
-            //UnityEngine.Debug.Log("Picking done in " + Stopwatch.Elapsed);
+            UnityEngine.Debug.Log("Picking done in " + Stopwatch.Elapsed);
         }
     }
 }

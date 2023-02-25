@@ -65,10 +65,13 @@ public class Test : MonoBehaviour
         return score;
     };
 
-    /* void Ga_BestChromosomeChanged(object? sender, EventArgs e)
+    void BestChangeEvent(object sender, EventArgs e)
     {
-        FileHandler.DrawAdam(@"Assets/ReplyChallenges/2022/Out/" + file_name + ".txt", ga.BestChromosome);
-    } */
+        FileHandler.DrawAdam(
+            @"Assets/ReplyChallenges/2022/Out/" + file_name + ".txt",
+            (sender as Population<int>).Best
+        );
+    }
 
     void Start()
     {
@@ -85,7 +88,8 @@ public class Test : MonoBehaviour
             evaluate: evaluate,
             comparer: best_score,
             mutation_factor: mutation_factor,
-            isUnique: isUnique
+            isUnique: isUnique,
+            on_best_change: BestChangeEvent
         );
 
         t = new Thread(() => ga.Start());
