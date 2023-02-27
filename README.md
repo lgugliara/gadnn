@@ -4,10 +4,10 @@ Fast and light genetic algorithm library, inspired by:
 > [giacomelli/GeneticSharp](https://github.com/giacomelli/GeneticSharp)
 
 Long-term goals:
-* [in-dev]  Avoid chromosomes and genes duplication between generations
-* [reached] Make use of parallelization (multithreading)
-* [in-dev]  Make use of CGPU for heavy operations
-* [in-dev]  Generalize the algorithm to keep it easier to configure and start
+* `in-dev`  Avoid chromosomes and genes duplication between generations
+* `reached` Make use of parallelization (multithreading)
+* `in-dev`  Make use of CGPU for heavy operations
+* `in-dev`  Generalize the algorithm to keep it easier to configure and start
 
 > Designed and implemented with `<3`
 
