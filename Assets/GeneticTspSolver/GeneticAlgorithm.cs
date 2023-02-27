@@ -58,7 +58,7 @@ namespace GeneticTspSolver
             OnBestChange = on_best_change;
             OnTerminate = on_terminate;
 
-            UnityEngine.Debug.Log("First population created in " + Stopwatch.Elapsed);
+            UnityEngine.Debug.LogError("First population created in " + Stopwatch.Elapsed);
         }
 
         public async Task Start() => Run();
@@ -68,13 +68,14 @@ namespace GeneticTspSolver
             for(int generation = 0; !ITermination<T>.IsTerminated(this); generation++)
             {
                 if(generation % 1 == 0)
-                    UnityEngine.Debug.LogWarning("(GEN)\t" + generation + "(BEST FITNESS)\t" + Population.Best.Fitness.Value);
+                    UnityEngine.Debug.LogWarning("(GEN) " + generation + "\t\t(BEST FITNESS) " + Population.Best.Fitness.Value);
 
                 // TODO
                 //Population.PerformCrossover();
                 Population.PerformMutate();
-                Population.PerformEvaluate(OnBestChange);
-                Population.PerformPick();
+
+                if(Population.PerformEvaluate(OnBestChange))
+                    Population.PerformPick();
 
                 OnRan?.Invoke(this, EventArgs.Empty);
             }

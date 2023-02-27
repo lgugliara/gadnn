@@ -30,27 +30,34 @@ namespace GeneticTspSolver
             Values = new ArraySegment<T>(parent.AllValues, genes_count * id, genes_count);
             Genes = new ArraySegment<Gene<T>>(parent.AllGenes, genes_count * id, genes_count);
 
-            Chromosome<T>._TransferTo(this, this);
+            _TransferTo(this, this);
         }
 
         private static void _TransferTo(Chromosome<T> chromosome, Chromosome<T> to)
         {
-            to.Lookup = to.Genes.AsParallel().Select((g, i) =>
-            {
-                if (g == null)
-                    to.Genes[(int)i] = new Gene<T>(chromosome, (int)i, chromosome.Values[(int)i]);
-                else
-                    to.Genes[(int)i].Value = chromosome.Values[(int)i];
+            //var keyValues = chromosome.Genes.AsParallel().Select((g, i) =>
+            //{
+            //    to.Values[i] = chromosome.Values[i];
+            //    if (to.Genes[i] == null) to.Genes[i] = new Gene<T>(to, i, to.Values[i]);
+            //    return new { v = to.Values[i], i };
+            //}).ToArray();
 
+            //UnityEngine.Debug.Log(to.Id + " | Length: " + keyValues.Length + "\t\tDistinct values: " + keyValues.Select(x => x.v).Distinct().Count());
+            //UnityEngine.Debug.Log(to.Id + " | To chromosome: " + to.ToString());
+
+            to.Lookup = chromosome.Genes.AsParallel().Select((g, i) =>
+            {
+                to.Values[i] = chromosome.Values[i];
+                if (to.Genes[i] == null) to.Genes[i] = new Gene<T>(to, i, to.Values[i]);
                 return new { v = to.Values[i], i };
             }).ToDictionary(x => x.v, x => x.i);
         }
 
         public override string ToString() => Genes.Select(g => g.ToString()).Aggregate((i, j) => i + ';' + j);
 
-        public static Chromosome<T> From(Chromosome<T> from, int id) => new Chromosome<T>(from.Parent, id, from.GenesCount);
+        public static Chromosome<T> From(Chromosome<T> from, int id) => new(from.Parent, id, from.GenesCount);
 
-        public static void Copy(Chromosome<T> from, Chromosome<T> to) => Chromosome<T>._TransferTo(from, to);
+        public static void Copy(Chromosome<T> from, Chromosome<T> to) => _TransferTo(from, to);
 
         public int CompareTo(object obj)
         {

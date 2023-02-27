@@ -219,9 +219,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f8fe2fb48db47c6b54433af95adaf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  file_name: 1
-  best_score: 103348
+  file_name: 5
+  best_score: 19913031
   chromosomes_count: 20
-  genes_count: 1000
+  genes_count: 100000
   mutation_factor: 0.1
   isUnique: 1

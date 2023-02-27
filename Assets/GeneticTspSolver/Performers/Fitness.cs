@@ -23,7 +23,11 @@ namespace GeneticTspSolver
             );
             var new_best = population.Chromosomes.Max();
 
-            return new_best.Fitness.Value > old_best.Fitness.Value;
+            var hasChanged = new_best.Fitness.Value > old_best.Fitness.Value;
+            if (hasChanged)
+                population.Best = new_best;
+
+            return hasChanged;
         }
         public static void Evaluate(Chromosome<T> chromosome)
         {
@@ -37,10 +41,9 @@ namespace GeneticTspSolver
 
         public static void Initialize(Func<Chromosome<T>, double> evaluate, double comparer)
         {
-            Fitness<T>._evaluate = evaluate;
+            _evaluate = evaluate;
 
-            if (comparer > 0)
-                Comparer = comparer;
+            if (comparer > 0) Comparer = comparer;
             else throw new ArgumentException("Comparer must be greater than 0");
         }
     }

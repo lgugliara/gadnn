@@ -1,16 +1,17 @@
 ﻿<Properties StartupConfiguration="{15C5401D-F845-8896-A717-4978DF10DC9E}|">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GeneticTspSolver/Chromosome.cs">
     <Files>
-      <File FileName="Assets/GeneticTspSolver/Performers/Crossover.cs" Line="16" Column="6" />
-      <File FileName="Assets/GeneticTspSolver/Performers/Mutation.cs" Line="30" Column="6" />
-      <File FileName="Assets/GeneticTspSolver/Performers/Fitness.cs" Line="21" Column="85" />
-      <File FileName="Assets/GeneticTspSolver/Performers/Picker.cs" Line="27" Column="10" />
-      <File FileName="Assets/Test.cs" Line="77" Column="6" NotebookId="1" />
-      <File FileName="Assets/GeneticTspSolver/GeneticAlgorithm.cs" Line="36" Column="39" NotebookId="1" />
-      <File FileName="Assets/GeneticTspSolver/Population.cs" Line="59" Column="39" NotebookId="1" />
-      <File FileName="Assets/GeneticTspSolver/Chromosome.cs" Line="69" Column="18" NotebookId="1" />
-      <File FileName="Assets/GeneticTspSolver/Gene.cs" Line="17" Column="22" NotebookId="1" />
+      <File FileName="Assets/GeneticTspSolver/Performers/Crossover.cs" Line="1" Column="1" />
+      <File FileName="Assets/GeneticTspSolver/Performers/Mutation.cs" Line="28" Column="53" />
+      <File FileName="Assets/GeneticTspSolver/Performers/Fitness.cs" Line="25" Column="1" />
+      <File FileName="Assets/GeneticTspSolver/Performers/Picker.cs" Line="15" Column="15" />
+      <File FileName="Assets/Test.cs" Line="74" Column="1" NotebookId="1" />
+      <File FileName="Assets/GeneticTspSolver/GeneticAlgorithm.cs" Line="61" Column="39" NotebookId="1" />
+      <File FileName="Assets/GeneticTspSolver/Population.cs" Line="98" Column="13" NotebookId="1" />
+      <File FileName="Assets/GeneticTspSolver/Chromosome.cs" Line="53" Column="15" NotebookId="1" />
+      <File FileName="Assets/GeneticTspSolver/Gene.cs" Line="34" Column="1" NotebookId="1" />
+      <File FileName="Assets/ReplyChallenges/2022/Specific/FileHandler.cs" Line="70" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,10 +19,12 @@
           <Node name="gpu-tps" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="GeneticTspSolver" expanded="True">
-                <Node name="Chromosome.cs" selected="True" />
+                <Node name="Performers" expanded="True" />
+                <Node name="Utils" expanded="True" />
               </Node>
               <Node name="ReplyChallenges" expanded="True">
                 <Node name="2022" expanded="True">
+                  <Node name="In" expanded="True" />
                   <Node name="Specific" expanded="True" />
                 </Node>
               </Node>
@@ -29,14 +32,15 @@
           </Node>
         </State>
       </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ef6e53e1-e92b-409e-bf2f-bc6213558c57" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/lorenz/Library/Mobile Documents/com~apple~CloudDocs/Progetti/Unity/gpu-tps/Assets/GeneticTspSolver/Chromosome.cs" relfile="Assets/GeneticTspSolver/Chromosome.cs" line="60" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="1dc12f21-62a5-4a6e-b6f1-e1fed1d93c34" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

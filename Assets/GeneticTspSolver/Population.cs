@@ -86,8 +86,8 @@ namespace GeneticTspSolver
             var hasChanged = Fitness<T>.Evaluate(this);
             UnityEngine.Debug.Log("Evaluation done in " + Stopwatch.Elapsed);
 
-            if(e != null)
-                e.Invoke(this, EventArgs.Empty);
+            if(hasChanged)
+                e?.Invoke(this, EventArgs.Empty);
 
             return hasChanged;
         }

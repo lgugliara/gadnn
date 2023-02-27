@@ -26,7 +26,7 @@ namespace GeneticTspSolver
 
         public override string ToString() => Value.ToString();
 
-        public static Gene<T> From(Gene<T> from, Chromosome<T> parent) => new Gene<T>(parent, from.Id, from.Value);
+        public static Gene<T> From(Gene<T> from, Chromosome<T> parent) => new(parent, from.Id, from.Value);
 
         public bool Equals(T other) => Value.Equals(other);
     }
