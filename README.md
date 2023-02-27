@@ -32,7 +32,9 @@ var ga = new GeneticAlgorithm<T>(
 
 Then, start the algorithm with:
 
-`ga.Start();`
+```cs
+ga.Start();
+```
 
 > Note: since the `Start` method is sync, it is suggested to wrap it in a `Thread` instead, and start it like follows:
 
