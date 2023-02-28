@@ -1,9 +1,117 @@
-#pragma kernel Fit
+// Evaluation
+#pragma kernel Evaluate
+// Crossover stages
+#pragma kernel EliteCrossover
+#pragma kernel TournamentCrossover
+// Mutation stages
+#pragma kernel InnerMutate
+#pragma kernel OuterMutate
+// Picking stages
+#pragma kernel PickValues
+#pragma kernel PickLookups
 
-RWStructuredBuffer<float> Result;
+#include "UnityShaderVariables.cginc"
 
-[numthreads(64,1,1)]
-void Fit (uint3 id : SV_DispatchThreadID)
+// Global buffers
+
+// todo: Pool type is not int, in cs it is <T>
+RWStructuredBuffer<int> Pool;
+// todo: AllValues type is not int, in cs it is <T>
+RWStructuredBuffer<int> AllValues;
+
+float chromosomes_count;
+float genes_count;
+
+// Utils: Randoms
+
+// todo: move utilities to "utils/*.cginc"
+
+int RandomInt(float2 seed, int min, int max)
 {
-    Result[id.x] = 0;
+    return lerp(min, max, frac(sin(dot(seed.xy, float2(12.9898, 78.233))) * 43758.5453));
+}
+
+int2 RandomIndexes(float seed, int min, int max)
+{
+    // todo: don't use "_Time", use "_SinTime" and "_CosTime" instead
+    float2 seed_in = seed * _Time.xy;
+    float2 seed_out = -seed * _Time.yx;
+    //float2 seed_in = seed * _SinTime.xy;
+    //float2 seed_out = -seed * _CosTime.yx;
+    return int2(RandomInt(seed_in, min, max), RandomInt(seed_out, min, max));
+}
+
+// Evaluation
+
+// todo: set numthreads.x as chromosome' genes count
+[numthreads(64,1,1)]
+void Evaluate (uint3 id : SV_DispatchThreadID)
+{
+
+}
+
+// Crossover stages
+
+// todo: set numthreads.x as chromosome' genes count
+[numthreads(64,1,1)]
+void EliteCrossover (uint3 id : SV_DispatchThreadID)
+{
+
+}
+
+// todo: set numthreads.x as chromosome' genes count
+[numthreads(64,1,1)]
+void TournamentCrossover (uint3 id : SV_DispatchThreadID)
+{
+
+}
+
+// Mutation stages
+
+// todo: deprecated
+RWStructuredBuffer<int2> InnerSwaps;
+
+// todo: don't use "values_count", use "max_swaps" instead
+float values_count;
+float max_swaps;
+
+// todo: set numthreads.x as chromosome' genes count
+[numthreads(64,1,1)]
+void InnerMutate (uint3 id : SV_DispatchThreadID)
+{
+    // todo: don't use "values_count", use "chromosomes_count * genes_count" instead
+    // todo: use "max_swaps" to determine when to apply swapping
+    int2 pool_ids = RandomIndexes(id.x, 0, values_count);
+    //int2 pool_ids = RandomIndexes(id.x, 0, chromosomes_count * genes_count);
+    // todo: remove InnerSwaps buffer!
+    InnerSwaps[id.x] = pool_ids;
+
+    //int2 pool_vals = int2(Pool[pool_ids.x], Pool[pool_ids.y]);
+
+    // todo: use chromosome id for indexing
+    //Pool[x] = pool_vals.y;
+    //Pool[y] = pool_vals.x;
+}
+
+// todo: set numthreads.x as chromosome' genes count
+[numthreads(64,1,1)]
+void OuterMutate (uint3 id : SV_DispatchThreadID)
+{
+
+}
+
+// Picking stages
+
+// todo: set numthreads.x as chromosome' genes count
+[numthreads(64,1,1)]
+void PickValues (uint3 id : SV_DispatchThreadID)
+{
+
+}
+
+// todo: set numthreads.x as chromosome' genes count
+[numthreads(64,1,1)]
+void PickLookups (uint3 id : SV_DispatchThreadID)
+{
+
 }
